@@ -43,7 +43,7 @@
     _dotRatio = 1. / 9.;
     
     {
-        _circleView = [UIView new];
+        _circleView = [ALDayView new];
         [self addSubview:_circleView];
         
         _circleView.backgroundColor = [UIColor colorWithRed:0x33/256. green:0xB3/256. blue:0xEC/256. alpha:.5];

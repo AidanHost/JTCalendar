@@ -9,13 +9,15 @@
 
 #import "JTCalendarDay.h"
 
+#import "ALDayView.h"
+
 @interface JTCalendarDayView : UIView<JTCalendarDay>
 
 @property (nonatomic, weak) JTCalendarManager *manager;
 
 @property (nonatomic) NSDate *date;
 
-@property (nonatomic, readonly) UIView *circleView;
+@property (nonatomic, readonly) ALDayView *circleView;
 @property (nonatomic, readonly) UIView *dotView;
 @property (nonatomic, readonly) UILabel *textLabel;
 
