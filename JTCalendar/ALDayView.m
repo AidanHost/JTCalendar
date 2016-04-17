@@ -13,9 +13,9 @@
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetStrokeColorWithColor(context, self.backgroundColor.CGColor);
     CGContextSetLineWidth(context, 2.f);
-    CGContextAddRect(context, rect);
+    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), CGRectGetHeight(rect)/2, 0, 2*M_PI, 0);
+    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
     CGContextStrokePath(context);
 }
 
