@@ -117,13 +117,13 @@ static CGFloat distanse = 7.5f;
         newCenter = CGRectGetWidth(self.frame)/2.0 - distanse;
     }
 
-    for (int i = 1; i <= [self.colorsForDots count]; i++) {
+    for (int i = 0; i < [self.colorsForDots count]; i++) {
         UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sizeDot, sizeDot)];
     
-        dot.center = CGPointMake(newCenter * i, (self.frame.size.height / 2.0) + sizeDot * 2.5);
+        dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + sizeDot * 2.5);
         dot.layer.cornerRadius = sizeDot / 2.0;
         
-        dot.backgroundColor = [self.colorsForDots objectAtIndex:(i-1)];
+        dot.backgroundColor = [self.colorsForDots objectAtIndex:i];
         dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
         dot.layer.shouldRasterize = YES;
         
