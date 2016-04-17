@@ -9,6 +9,8 @@
 
 #import "JTCalendarManager.h"
 
+static CGFloat distanse = 15.0f;
+
 @implementation JTCalendarDayView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -38,7 +40,8 @@
 - (void)commonInit
 {
     self.clipsToBounds = YES;
-    
+    self.colorsForDots = [NSMutableArray array];
+
     _circleRatio = .9;
     _dotRatio = 1. / 9.;
     
@@ -51,17 +54,6 @@
 
         _circleView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         _circleView.layer.shouldRasterize = YES;
-    }
-    
-    {
-        _dotView = [UIView new];
-        [self addSubview:_dotView];
-        
-        _dotView.backgroundColor = [UIColor redColor];
-        _dotView.hidden = YES;
-
-        _dotView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        _dotView.layer.shouldRasterize = YES;
     }
     
     {
@@ -98,10 +90,47 @@
     _circleView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
     _circleView.layer.cornerRadius = sizeCircle / 2.;
     
-    _dotView.frame = CGRectMake(0, 0, sizeDot, sizeDot);
-    _dotView.center = CGPointMake(self.frame.size.width / 2., (self.frame.size.height / 2.) +sizeDot * 2.5);
-    _dotView.layer.cornerRadius = sizeDot / 2.;
+    if ([self.colorsForDots count] > 0) {
+        [self initAndLayoutDotView];
+    }
+    
 }
+
+- (void)initAndLayoutDotView {
+    
+    CGFloat sizeCircle = MIN(self.frame.size.width, self.frame.size.height);
+    CGFloat sizeDot = sizeCircle;
+    
+    sizeCircle = sizeCircle * _circleRatio;
+    sizeDot = sizeDot * _dotRatio;
+    
+    sizeCircle = roundf(sizeCircle);
+    sizeDot = roundf(sizeDot);
+    
+    CGFloat newCenter;
+    
+    if ([self.colorsForDots count] == 1) {
+        newCenter = CGRectGetWidth(self.frame)/2.0;
+    } else if ([self.colorsForDots count] == 2) {
+        newCenter = CGRectGetWidth(self.frame)/2.0 - distanse/2.0;
+    } else {
+        newCenter = CGRectGetWidth(self.frame)/2.0 - distanse;
+    }
+
+    for (int i = 1; i <= [self.colorsForDots count]; i++) {
+        UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sizeDot, sizeDot)];
+    
+        dot.center = CGPointMake(newCenter * i, (self.frame.size.height / 2.0) + sizeDot * 2.5);
+        dot.layer.cornerRadius = sizeDot / 2.0;
+        
+        dot.backgroundColor = [self.colorsForDots objectAtIndex:(i-1)];
+        dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        dot.layer.shouldRasterize = YES;
+        
+        [self addSubview:dot];
+    }
+}
+
 
 - (void)setDate:(NSDate *)date
 {
