@@ -9,7 +9,7 @@
 
 #import "JTCalendarManager.h"
 
-static CGFloat distanse = 15.0f;
+static CGFloat distanse = 7.5f;
 
 @implementation JTCalendarDayView
 
