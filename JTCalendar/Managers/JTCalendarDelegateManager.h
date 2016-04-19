@@ -19,7 +19,6 @@
 
 - (UIView *)buildMenuItemView;
 - (void)prepareMenuItemView:(UIView *)menuItemView date:(NSDate *)date;
-- (NSString *)nameMonthWithDate:(NSDate *) date;
 
 // Content view
 
@@ -45,5 +44,7 @@
 
 - (void)prepareDayView:(UIView<JTCalendarDay> *)dayView;
 - (void)didTouchDayView:(UIView<JTCalendarDay> *)dayView;
+
+- (void)nameMonthPreviousDate:(NSDate *)previousDate currentDate:(NSDate *)currentDate nextDate:(NSDate *)nextDate;
 
 @end

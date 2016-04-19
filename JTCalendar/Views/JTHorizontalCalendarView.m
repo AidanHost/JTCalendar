@@ -441,6 +441,10 @@ typedef NS_ENUM(NSInteger, JTCalendarPageMode) {
 
 - (void)updateMenuDates
 {
+    [_manager.delegateManager nameMonthPreviousDate:_leftView.date
+                                        currentDate:_centerView.date
+                                           nextDate:_rightView.date];
+    
     [_manager.scrollManager setMenuPreviousDate:_leftView.date
                                     currentDate:_centerView.date
                                        nextDate:_rightView.date];

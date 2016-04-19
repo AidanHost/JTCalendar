@@ -187,4 +187,16 @@
     }
 }
 
+#pragma mark - Name Month
+
+- (void)nameMonthPreviousDate:(NSDate *)previousDate currentDate:(NSDate *)currentDate nextDate:(NSDate *)nextDate {
+    NSString *previosName = [self nameMonthWithDate:previousDate];
+    NSString *currentName = [self nameMonthWithDate:currentDate];
+    NSString *nextName = [self nameMonthWithDate:nextDate];
+    
+    if (_manager.delegate && [_manager.delegate respondsToSelector:@selector(nameMonthPreviousDate:currentDate:nextDate:)]) {
+        [_manager.delegate nameMonthPreviousName:previosName currentName:currentName nextName:nextName];
+    }
+}
+
 @end
