@@ -19,6 +19,7 @@
 
 - (UIView *)buildMenuItemView;
 - (void)prepareMenuItemView:(UIView *)menuItemView date:(NSDate *)date;
+- (NSString *)nameMonthWithDate:(NSDate *) date;
 
 // Content view
 
