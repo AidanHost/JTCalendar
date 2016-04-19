@@ -194,9 +194,7 @@
     NSString *currentName = [self nameMonthWithDate:currentDate];
     NSString *nextName = [self nameMonthWithDate:nextDate];
     
-    if (_manager.delegate && [_manager.delegate respondsToSelector:@selector(nameMonthPreviousDate:currentDate:nextDate:)]) {
-        [_manager.delegate nameMonthPreviousName:previosName currentName:currentName nextName:nextName];
-    }
+    [_manager.delegate nameMonthPreviousName:previosName currentName:currentName nextName:nextName];
 }
 
 @end
