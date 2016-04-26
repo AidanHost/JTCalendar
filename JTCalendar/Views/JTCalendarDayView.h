@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) UIView *dotView;
 @property (nonatomic, readonly) UILabel *textLabel;
 
+@property (nonatomic) NSMutableArray *dots;
 
 @property (nonatomic) NSMutableArray *colorsForDots;
 @property (nonatomic) CGFloat circleRatio;

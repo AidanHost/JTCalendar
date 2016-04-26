@@ -41,7 +41,8 @@ static CGFloat distanse = 7.5f;
 {
     self.clipsToBounds = YES;
     self.colorsForDots = [NSMutableArray array];
-
+    self.dots = [NSMutableArray array];
+    
     _circleRatio = .9;
     _dotRatio = 1. / 9.;
     
@@ -128,6 +129,7 @@ static CGFloat distanse = 7.5f;
         dot.layer.shouldRasterize = YES;
         
         [self addSubview:dot];
+        [self.dots addObject:dot];
     }
 }
 
