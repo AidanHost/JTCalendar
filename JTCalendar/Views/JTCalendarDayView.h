@@ -26,6 +26,9 @@
 @property (nonatomic) CGFloat circleRatio;
 @property (nonatomic) CGFloat dotRatio;
 
+@property (nonatomic) CGFloat sizeCircle;
+@property (nonatomic) CGFloat sizeDot;
+
 @property (nonatomic) BOOL isFromAnotherMonth;
 
 /*!

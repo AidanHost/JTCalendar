@@ -78,31 +78,23 @@ static CGFloat distanse = 7.5f;
 {
     _textLabel.frame = self.bounds;
     
-    CGFloat sizeCircle = MIN(self.frame.size.width, self.frame.size.height);
-    CGFloat sizeDot = sizeCircle;
+    self.sizeCircle = MIN(self.frame.size.width, self.frame.size.height);
     
-    sizeCircle = sizeCircle * _circleRatio;
-    sizeDot = sizeDot * _dotRatio;
+   self.sizeDot = self.sizeCircle;
     
-    sizeCircle = roundf(sizeCircle);
-    sizeDot = roundf(sizeDot);
+    self.sizeCircle = self.sizeCircle * _circleRatio;
+    self.sizeDot = self.sizeDot * _dotRatio;
     
-    _circleView.frame = CGRectMake(0, 0, sizeCircle, sizeCircle);
+    self.sizeCircle = roundf(self.sizeCircle);
+    self.sizeDot = roundf(self.sizeDot);
+    
+    _circleView.frame = CGRectMake(0, 0, self.sizeCircle, self.sizeCircle);
     _circleView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
-    _circleView.layer.cornerRadius = sizeCircle / 2.;
+    _circleView.layer.cornerRadius = self.sizeCircle / 2.;
     
 }
 
 - (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors {
-    
-    CGFloat sizeCircle = MIN(self.frame.size.width, self.frame.size.height);
-    CGFloat sizeDot = sizeCircle;
-    
-    sizeCircle = sizeCircle * _circleRatio;
-    sizeDot = sizeDot * _dotRatio;
-    
-    sizeCircle = roundf(sizeCircle);
-    sizeDot = roundf(sizeDot);
     
     CGFloat newCenter;
     
@@ -115,10 +107,10 @@ static CGFloat distanse = 7.5f;
     }
 
     for (int i = 0; i < countDot; i++) {
-        UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sizeDot, sizeDot)];
+        UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.sizeDot, self.sizeDot)];
     
-        dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + sizeDot * 2.5);
-        dot.layer.cornerRadius = sizeDot / 2.0;
+        dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + self.sizeDot * 2.5);
+        dot.layer.cornerRadius = self.sizeDot / 2.0;
         
         dot.backgroundColor = colors[i];
         dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
