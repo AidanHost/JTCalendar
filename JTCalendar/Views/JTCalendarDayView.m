@@ -92,38 +92,38 @@ static CGFloat distanse = 7.5f;
     _circleView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
     _circleView.layer.cornerRadius = self.sizeCircle / 2.;
     
+    if ([self.dots count] != 0) {
+        CGFloat newCenter;
+        if ([self.dots count] == 1) {
+            newCenter = CGRectGetWidth(self.frame)/2.0;
+        } else if ([self.dots count] == 2) {
+            newCenter = CGRectGetWidth(self.frame)/2.0 - distanse/2.0;
+        } else {
+            newCenter = CGRectGetWidth(self.frame)/2.0 - distanse;
+        }
+        
+        for (int i = 0; i < [self.dots count]; i++) {
+            UIView *dot = self.dots[i];
+            dot.frame = CGRectMake(0, 0, self.sizeDot, self.sizeDot);
+            dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + self.sizeDot * 2.5);
+            dot.layer.cornerRadius = self.sizeDot / 2.0;
+            dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
+            dot.layer.shouldRasterize = YES;
+            [self addSubview:dot];
+        }
+    }
+    
 }
 
 - (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors {
     
-    CGFloat newCenter;
-    
-    if (countDot == 1) {
-        newCenter = CGRectGetWidth(self.frame)/2.0;
-    } else if (countDot == 2) {
-        newCenter = CGRectGetWidth(self.frame)/2.0 - distanse/2.0;
-    } else {
-        newCenter = CGRectGetWidth(self.frame)/2.0 - distanse;
-    }
-
     for (int i = 0; i < countDot; i++) {
-        UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.sizeDot, self.sizeDot)];
-    
-        dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + self.sizeDot * 2.5);
-        dot.layer.cornerRadius = self.sizeDot / 2.0;
-        
+        UIView *dot = [[UIView alloc] init];
         dot.backgroundColor = colors[i];
-        dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        dot.layer.shouldRasterize = YES;
-        
-        [self addSubview:dot];
         [self.dots addObject:dot];
     }
 }
 
-- (void)setBackgroundColorForDotView:(UIView *)dot withColor:(UIColor *)color {
-    dot.backgroundColor = color;
-}
 
 - (void)setDate:(NSDate *)date
 {
