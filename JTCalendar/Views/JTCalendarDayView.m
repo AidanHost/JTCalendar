@@ -93,7 +93,7 @@ static CGFloat distanse = 7.5f;
     
 }
 
-- (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot {
+- (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors {
     
     CGFloat sizeCircle = MIN(self.frame.size.width, self.frame.size.height);
     CGFloat sizeDot = sizeCircle;
@@ -120,6 +120,7 @@ static CGFloat distanse = 7.5f;
         dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + sizeDot * 2.5);
         dot.layer.cornerRadius = sizeDot / 2.0;
         
+        dot.backgroundColor = colors[i];
         dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
         dot.layer.shouldRasterize = YES;
         
