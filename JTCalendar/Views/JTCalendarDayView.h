@@ -23,7 +23,6 @@
 
 @property (nonatomic) NSMutableArray *dots;
 
-@property (nonatomic) NSMutableArray *colorsForDots;
 @property (nonatomic) CGFloat circleRatio;
 @property (nonatomic) CGFloat dotRatio;
 
@@ -33,5 +32,7 @@
  * Must be call if override the class
  */
 - (void)commonInit;
+
+- (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot;
 
 @end

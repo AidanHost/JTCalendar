@@ -40,14 +40,14 @@ static CGFloat distanse = 7.5f;
 - (void)commonInit
 {
     self.clipsToBounds = YES;
-    self.colorsForDots = [NSMutableArray array];
+
     self.dots = [NSMutableArray array];
     
     _circleRatio = .9;
     _dotRatio = 1. / 9.;
     
     {
-        _circleView = [ALDayView new];
+        _circleView = [[ALDayView alloc] init];
         [self addSubview:_circleView];
         
         _circleView.backgroundColor = [UIColor colorWithRed:0x33/256. green:0xB3/256. blue:0xEC/256. alpha:.5];
@@ -91,13 +91,9 @@ static CGFloat distanse = 7.5f;
     _circleView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
     _circleView.layer.cornerRadius = sizeCircle / 2.;
     
-    if ([self.colorsForDots count] > 0) {
-        [self initAndLayoutDotView];
-    }
-    
 }
 
-- (void)initAndLayoutDotView {
+- (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot {
     
     CGFloat sizeCircle = MIN(self.frame.size.width, self.frame.size.height);
     CGFloat sizeDot = sizeCircle;
@@ -110,21 +106,20 @@ static CGFloat distanse = 7.5f;
     
     CGFloat newCenter;
     
-    if ([self.colorsForDots count] == 1) {
+    if (countDot == 1) {
         newCenter = CGRectGetWidth(self.frame)/2.0;
-    } else if ([self.colorsForDots count] == 2) {
+    } else if (countDot == 2) {
         newCenter = CGRectGetWidth(self.frame)/2.0 - distanse/2.0;
     } else {
         newCenter = CGRectGetWidth(self.frame)/2.0 - distanse;
     }
 
-    for (int i = 0; i < [self.colorsForDots count]; i++) {
+    for (int i = 0; i < countDot; i++) {
         UIView *dot = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sizeDot, sizeDot)];
     
         dot.center = CGPointMake(newCenter + i*distanse, (self.frame.size.height / 2.0) + sizeDot * 2.5);
         dot.layer.cornerRadius = sizeDot / 2.0;
         
-        dot.backgroundColor = [self.colorsForDots objectAtIndex:i];
         dot.layer.rasterizationScale = [UIScreen mainScreen].scale;
         dot.layer.shouldRasterize = YES;
         

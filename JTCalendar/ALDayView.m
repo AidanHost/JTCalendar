@@ -10,13 +10,24 @@
 
 @implementation ALDayView
 
+- (instancetype) init {
+    self = [super init];
+    if (self) {
+        self.colorForBorderView = [UIColor lightGrayColor];
+        self.setBorderForView = NO;
+    }
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetLineWidth(context, 1.f);
-    CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), CGRectGetHeight(rect)/2, 0, 2*M_PI, 0);
-    CGContextSetStrokeColorWithColor(context, [UIColor lightGrayColor].CGColor);
-    CGContextStrokePath(context);
+    if (self.setBorderForView) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        CGContextSetLineWidth(context, 1.f);
+        CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), CGRectGetHeight(rect)/2, 0, 2*M_PI, 0);
+        CGContextSetStrokeColorWithColor(context, self.colorForBorderView.CGColor);
+        CGContextStrokePath(context);
+    }
 }
 
 

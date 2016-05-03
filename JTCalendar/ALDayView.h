@@ -10,4 +10,7 @@
 
 @interface ALDayView : UIView
 
+@property (strong, nonatomic) UIColor *colorForBorderView;
+@property (assign, nonatomic) BOOL setBorderForView;
+
 @end
