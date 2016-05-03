@@ -33,7 +33,7 @@
  */
 - (void)commonInit;
 
-- (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot;
+- (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors;
 - (void)setBackgroundColorForDotView:(UIView *)dot withColor:(UIColor *)color;
 
 @end
