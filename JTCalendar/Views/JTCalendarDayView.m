@@ -128,6 +128,9 @@ static CGFloat distanse = 7.5f;
     }
 }
 
+- (void)setBackgroundColorForDotView:(UIView *)dot withColor:(UIColor *)color {
+    dot.backgroundColor = color;
+}
 
 - (void)setDate:(NSDate *)date
 {

@@ -34,5 +34,6 @@
 - (void)commonInit;
 
 - (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot;
+- (void)setBackgroundColorForDotView:(UIView *)dot withColor:(UIColor *)color;
 
 @end
