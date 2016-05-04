@@ -24,7 +24,7 @@
 - (void)commonInit
 {
     _pageViewHideWhenPossible = NO;
-    _pageViewNumberOfWeeks = 5;
+    _pageViewNumberOfWeeks = 6;
     _pageViewHaveWeekDaysView = YES;
     _weekDayFormat = JTCalendarWeekDayFormatShort;
     _weekModeEnabled = NO;
