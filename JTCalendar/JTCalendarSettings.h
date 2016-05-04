@@ -13,6 +13,11 @@ typedef NS_ENUM(NSInteger, JTCalendarWeekDayFormat) {
     JTCalendarWeekDayFormatFull
 };
 
+typedef NS_ENUM(NSUInteger, JTCalendarFormatDay) {
+    JTCalendarFormatDayLongDay,
+    JTCalendarFormatDayShortDay
+};
+
 @interface JTCalendarSettings : NSObject
 
 
@@ -33,6 +38,10 @@ typedef NS_ENUM(NSInteger, JTCalendarWeekDayFormat) {
 
 @property (nonatomic) JTCalendarWeekDayFormat weekDayFormat;
 
+
+// Day view
+
+@property (nonatomic) JTCalendarFormatDay formatDay;
 
 // Use for override
 - (void)commonInit;

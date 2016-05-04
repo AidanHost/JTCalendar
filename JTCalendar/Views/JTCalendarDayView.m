@@ -139,7 +139,11 @@ static CGFloat distanse = 7.5f;
     static NSDateFormatter *dateFormatter = nil;
     if(!dateFormatter){
         dateFormatter = [_manager.dateHelper createDateFormatter];
-        [dateFormatter setDateFormat:@"dd"];
+        if (_manager.settings.formatDay == JTCalendarFormatDayLongDay) {
+            [dateFormatter setDateFormat:@"dd"];
+        } else {
+            [dateFormatter setDateFormat:@"d"];
+        }
     }
     
     _textLabel.text = [dateFormatter stringFromDate:_date];
