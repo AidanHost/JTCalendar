@@ -116,11 +116,12 @@ static CGFloat distanse = 7.5f;
 }
 
 - (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors {
-    
-    for (int i = 0; i < countDot; i++) {
-        UIView *dot = [[UIView alloc] init];
-        dot.backgroundColor = colors[i];
-        [self.dots addObject:dot];
+    if ([self.dots count] < 1) {
+        for (int i = 0; i < countDot; i++) {
+            UIView *dot = [[UIView alloc] init];
+            dot.backgroundColor = colors[i];
+            [self.dots addObject:dot];
+        }
     }
 }
 
