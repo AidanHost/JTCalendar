@@ -177,5 +177,10 @@
     return NO;
 }
 
+
+- (BOOL)isDayInWeekend:(NSDate *)date {
+    return [self.calendar isDateInWeekend:date];
+}
+
 @end
 
