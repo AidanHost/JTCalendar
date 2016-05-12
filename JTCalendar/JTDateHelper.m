@@ -177,9 +177,25 @@
     return NO;
 }
 
+- (NSMutableArray *)daysFromCurrentDatesArray:(NSMutableArray *)currentArray forInterval:(NSInteger)interval {
+    NSDate *date = [currentArray lastObject];
+    for (int i = 1; i <= interval; i++) {
+        [currentArray addObject:[date dateByAddingTimeInterval:60*60*24*i]];
+    }
+    return currentArray;
+}
 
-- (BOOL)isDayInWeekend:(NSDate *)date {
-    return [self.calendar isDateInWeekend:date];
+- (NSMutableArray *)daysWithoutWeekendFromCurrentDatesArray:(NSMutableArray *)currentArray forInterval:(NSInteger)interval {
+    NSDate *date = [currentArray lastObject];
+    for (int i = 1; i <= interval; i++) {
+        NSDate *newDate = [date dateByAddingTimeInterval:60*60*24*i];
+        if (![self.calendar isDateInWeekend:newDate]) {
+            [currentArray addObject:newDate];
+        } else {
+            interval++;
+        }
+    }
+    return currentArray;
 }
 
 @end

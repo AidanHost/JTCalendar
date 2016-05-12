@@ -31,6 +31,7 @@
 - (BOOL)date:(NSDate *)dateA isEqualOrAfter:(NSDate *)dateB;
 - (BOOL)date:(NSDate *)date isEqualOrAfter:(NSDate *)startDate andEqualOrBefore:(NSDate *)endDate;
 
-- (BOOL)isDayInWeekend:(NSDate *)date;
+- (NSMutableArray *)daysFromCurrentDatesArray:(NSMutableArray *)currentArray forInterval:(NSInteger)interval;
+- (NSMutableArray *)daysWithoutWeekendFromCurrentDatesArray:(NSMutableArray *)currentArray forInterval:(NSInteger)interval;
 
 @end
