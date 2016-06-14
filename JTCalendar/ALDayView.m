@@ -23,6 +23,11 @@
     if (self.setBorderForView) {
         CGContextRef context = UIGraphicsGetCurrentContext();
         
+        rect.origin.x = rect.origin.x+1; // for ios 10
+        rect.origin.y = rect.origin.y+1; // for ios 10
+        rect.size.height = rect.size.height-2; // for ios 10
+        rect.size.width = rect.size.width-2; // for ios 10
+        
         CGContextSetLineWidth(context, 1.f);
         CGContextAddArc(context, CGRectGetMidX(rect), CGRectGetMidY(rect), CGRectGetHeight(rect)/2, 0, 2*M_PI, 0);
         CGContextSetStrokeColorWithColor(context, self.colorForBorderView.CGColor);
