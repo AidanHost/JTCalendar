@@ -91,6 +91,7 @@ static CGFloat distanse = 7.5f;
     _circleView.frame = CGRectMake(0, 0, self.sizeCircle, self.sizeCircle);
     _circleView.center = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
     _circleView.layer.cornerRadius = self.sizeCircle / 2.;
+    _circleView.layer.masksToBounds = YES; // fix for ios 10
     
     if ([self.dots count] != 0) {
         CGFloat newCenter;
