@@ -74,6 +74,23 @@ static CGFloat distanse = 7.5f;
     }
 }
 
+- (void)layoutIfNeeded
+{
+    [super layoutIfNeeded];
+    if ([self.dots count] < 1) {
+        if ([self.subviews count] > 2) {
+            NSInteger counts = self.subviews.count;
+            NSMutableArray *array = [NSMutableArray array];
+            for (int i = 0; i < counts - 2; i++) {
+                [array addObject:[self.subviews objectAtIndex:(counts-1-i)]];
+            }
+            for (UIView *view in array) {
+                [view removeFromSuperview];
+            }
+        }
+    }
+}
+
 - (void)layoutSubviews
 {
     _textLabel.frame = self.bounds;
@@ -93,6 +110,11 @@ static CGFloat distanse = 7.5f;
     _circleView.layer.cornerRadius = self.sizeCircle / 2.;
     _circleView.layer.masksToBounds = YES; // fix for ios 10
     
+    [self layoutDots];
+}
+
+- (void)layoutDots
+{
     if ([self.dots count] != 0) {
         CGFloat newCenter;
         if ([self.dots count] == 1) {
@@ -113,7 +135,6 @@ static CGFloat distanse = 7.5f;
             [self addSubview:dot];
         }
     }
-    
 }
 
 - (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors {
@@ -149,7 +170,7 @@ static CGFloat distanse = 7.5f;
     }
     
     _textLabel.text = [dateFormatter stringFromDate:_date];
-        
+    
     [_manager.delegateManager prepareDayView:self];
 }
 

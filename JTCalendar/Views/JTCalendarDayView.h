@@ -37,5 +37,6 @@
 - (void)commonInit;
 
 - (void)initAndLayoutDotViewWithCountDots:(NSInteger)countDot withColorSForDots:(NSArray *)colors;
+- (void)layoutDots;
 
 @end
